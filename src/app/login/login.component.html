@@ -1,0 +1,18 @@
+<br>
+<div class="container d-flex justify-content-center">
+    <form novalidate  (ngSubmit)="VerifyLogin()" [formGroup]="loginForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input formControlName="loginEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div>
+            <label for="exampleInputPassword1">Password</label>
+            <input formControlName="loginPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <br>
+        <div class="form-group">
+            <button id = "btn_login" type="submit" class="btn btn-primary">Se connecter</button>
+        </div>
+    </form>
+</div>

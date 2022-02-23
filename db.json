@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": 1, "email": "kokokantisambatra@gmail.com", "password": "user" }
+  ],
+  "articles": [
+    { "id": 1, "title": "Article non publie", "description": "Je suis un article publié" , "isPublished": true},
+    { "id": 2, "title": "Article non publie", "description": "Je ne suis pas encore publié" , "isPublished": false},
+    { "id": 3, "title": "Article non publie", "description": "Je ne suis pas encore publié " , "isPublished": false}
+  ]
+}

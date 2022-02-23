@@ -1,0 +1,56 @@
+<br>
+<div class="container d-flex justify-content-center">
+    <form novalidate  (ngSubmit)="SaveArticle()" [formGroup]="articleForm">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputTitre">Titre</label>
+            <input formControlName="articleTitre" type="text" class="form-control" id="inputTitre" placeholder="Titre">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputDescription">Description</label>
+            <input formControlName="articleDescription" type="text" class="form-control" id="inputDescription" placeholder="Description">
+        </div>
+        </div>
+        <div class="form-group">
+        <div class="form-check">
+            <input formControlName="articlePublie" class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                Publié l’article
+            </label>
+        </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Enregistrer l’article</button>
+        </div>
+    </form> 
+    <div class="text-center">
+        <img id = "logout_img" src="/assets/icons80.png" class="img-fluid btn" alt="Responsive image">
+    </div>
+</div> 
+<br>
+<div class="container d-flex justify-content-center">
+<!--Tableau de la liste des données BEGIN-->
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+        <th scope="col">Titre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Publie</th>
+<!--         <th scope="col">Action</th> -->
+        </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor = "let article of articles">
+            <td scope="row">{{article.title}}</td>
+            <td>{{article.description}}</td>
+            <td>
+                {{article.isPublished == true ? 'Oui' : 'Non'}}
+            </td>
+<!--             <td>
+                <a type="button" class="btn btn-danger">Supprimmer</a>
+                <a type="button" class="btn btn-warning">Modifier</a>
+            </td> -->
+            </tr>
+    </tbody>
+</table>
+</div>
