@@ -21,4 +21,24 @@ export class ArticlesService {
       tap(articles => console.log('articles: ', articles))
     );
   }
+// Fonction pour créer une article
+  public createTask(article: IArticles): Observable<IArticles>{
+    article = {
+      // on va prendre les valeur de l article
+      ...article
+      // Permet a InMemoryDb de faire un autoincrement
+      //id: null
+    };
+    return this.http.post<IArticles>(this.TASK_API_URL, article).pipe(
+      //catchError(this.handleHttpError)
+    );
+  }
+  //Fonction pour supprimmer une article
+  public deleteTask(article: IArticles): Observable<{}> {
+    const url = `${this.TASK_API_URL}/${article.id}`;
+
+    return this.http.delete<IArticles>(url).pipe(
+      //catchError(this.handleHttpError)
+    );
+  }
 }

@@ -44,8 +44,6 @@ registerLocaleData(localeFr, 'fr');
       { path: 'login', component: LoginComponent },
       // Redirection vers page des articles via '/articles/:id' dont id le numero id de l'utilisateur
       { path: 'articles/:id', component: ArticlesComponent },
-      // Redirection vers page des articles via '/articles'
-      { path: 'articles', component: ArticlesComponent },
       // Redirection vers login quand on accède au serveur
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       // Pour redirection sur les pages en cas de 404 vers login

@@ -4,16 +4,16 @@
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputTitre">Titre</label>
-            <input formControlName="articleTitre" type="text" class="form-control" id="inputTitre" placeholder="Titre">
+            <input formControlName="title" type="text" class="form-control" id="inputTitre" placeholder="Titre">
         </div>
         <div class="form-group col-md-6">
             <label for="inputDescription">Description</label>
-            <input formControlName="articleDescription" type="text" class="form-control" id="inputDescription" placeholder="Description">
+            <input formControlName="description" type="text" class="form-control" id="inputDescription" placeholder="Description">
         </div>
         </div>
         <div class="form-group">
         <div class="form-check">
-            <input formControlName="articlePublie" class="form-check-input" type="checkbox" id="gridCheck">
+            <input formControlName="isPublished" class="form-check-input" type="checkbox" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
                 Publié l’article
             </label>
@@ -24,7 +24,7 @@
         </div>
     </form> 
     <div class="text-center">
-        <img id = "logout_img" src="/assets/icons80.png" class="img-fluid btn" alt="Responsive image">
+        <img (click) = "Logout()" id = "logout_img" src="/assets/icons80.png" class="img-fluid btn" alt="Responsive image">
     </div>
 </div> 
 <br>
@@ -36,7 +36,7 @@
         <th scope="col">Titre</th>
         <th scope="col">Description</th>
         <th scope="col">Publie</th>
-<!--         <th scope="col">Action</th> -->
+        <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -46,10 +46,10 @@
             <td>
                 {{article.isPublished == true ? 'Oui' : 'Non'}}
             </td>
-<!--             <td>
-                <a type="button" class="btn btn-danger">Supprimmer</a>
-                <a type="button" class="btn btn-warning">Modifier</a>
-            </td> -->
+            <td>
+                <a (click) = "DeleteArticle(article)" type="button" class="btn btn-danger">Supprimmer</a>
+                <!-- <a type="button" class="btn btn-warning">Modifier</a> -->
+            </td>
             </tr>
     </tbody>
 </table>

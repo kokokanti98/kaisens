@@ -5,7 +5,6 @@ import {HttpClient} from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticlesService } from './articles.service';
 import { IArticles } from './articles';
-import { Low, JSONFile } from 'lowdb';
 
 @Component({
   selector: 'app-articles',
@@ -34,15 +33,15 @@ export class ArticlesComponent implements OnInit {
   ngOnInit(): void {
   // Création du formulaire
     this.articleForm = this.fb.group({
-      articleTitre: ['Un article', [Validators.required,
-      Validators.minLength(11),
+      title: ['Un article', [Validators.required,
+      Validators.minLength(3),
       Validators.maxLength(150)]
       ],
-      articleDescription: ['article non publie', [Validators.required,
-        Validators.minLength(11),
+      description: ['article non publie', [Validators.required,
+        Validators.minLength(3),
         Validators.maxLength(150)]
       ],
-      articlePublie: [null, Validators.required]
+      isPublished: [false]
     });
     // Va déclencher la fonction pour prendre tous les tâches dans la base de données
     this.articlesService.getAllArticles().subscribe({
@@ -61,6 +60,51 @@ export class ArticlesComponent implements OnInit {
     const id: number = +this.route.snapshot.paramMap.get('id')!;
     console.log(id);
     // affiche les valeurs entree dans le formulaire sur la console
-    console.log(this.articleForm.value);
+    //console.log(this.articleForm.value);
+    // Si notre formulaire est valide
+    if(this.articleForm.valid){
+      if(this.articleForm.dirty){
+        const article: IArticles =  {
+          // change la valeur de l'task
+          ...this.articleForm.value
+        }
+        console.log(article);
+        this.articlesService.createTask(article).subscribe({
+          next: () => this.saveCompleted()
+        });
+      }
+    }
+  }
+  // Fonction qui se déclenche après avoir finis d apporter des changements ds la bdd
+  public saveCompleted(): void{
+    // Reset le formulaire
+    this.articleForm.reset();
+    // Recharger la page
+    location.reload();
+  }
+  // Pour supprimer un article
+  public DeleteArticle(article: IArticles){
+    if (article.id === 0) {
+      this.saveCompleted();
+    }
+    // Si l article existe
+    else {
+      // Demander une confirmation à l'utilisateur avant de supprimer
+      if (confirm(`Voulez-vous réelement supprimer ${article.title} ?`)) {
+        // Lancer la suppression
+        this.articlesService.deleteTask(article).subscribe({
+          next: () => this.saveCompleted()
+        });
+      }
+    }
+  }
+  // Pour logout
+  public Logout(){
+    // Demander une confirmation à l'utilisateur avant de se deconnecter
+    if (confirm(`Voulez-vous vous déconnecter ?`)) {
+      // Aller sur la page login
+      this.router.navigate(['login']);
+      
+    }
   }
 }
