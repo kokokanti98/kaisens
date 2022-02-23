@@ -17,7 +17,6 @@ import  { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -29,7 +28,6 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     ArticlesComponent,
-    NavbarComponent,
     LoginComponent
   ],
   imports: [

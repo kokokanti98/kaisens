@@ -1,14 +1,25 @@
 <br>
+<div
+    class="alert alert-danger mt-2 mb-2 d-flex align-items-center"
+    *ngIf="ErrorLoginMsg"
+>
+<!--Si ErrorLoginMsg existe alors on va afficher notre div pour le message d"erreur-->
+<!--Puis par la suite si l'utilisateur aura l'option de cliquer sur X pour fermer le message d'érreur de la page-->
+    <span class="material-icons mr-2">error</span>
+    {{ ErrorLoginMsg }}
+    <span class="material-icons ml-auto" (click)="hideErrorLoginMsg()">
+        close
+    </span>
+</div>
 <div class="container d-flex justify-content-center">
     <form novalidate  (ngSubmit)="VerifyLogin()" [formGroup]="loginForm">
         <div class="form-group">
             <label for="exampleInputEmail1">Email</label>
-            <input formControlName="loginEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
         <div>
             <label for="exampleInputPassword1">Password</label>
-            <input formControlName="loginPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
         <br>
         <div class="form-group">

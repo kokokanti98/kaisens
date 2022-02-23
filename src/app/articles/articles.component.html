@@ -2,6 +2,9 @@
 <div class="container d-flex justify-content-center">
     <form novalidate  (ngSubmit)="SaveArticle()" [formGroup]="articleForm">
         <div class="form-row">
+        <div *ngIf = "false" class="form-group col-md-6">
+            <input formControlName="id" type="text" class="form-control" id="inputID" placeholder="ID">
+        </div>
         <div class="form-group col-md-6">
             <label for="inputTitre">Titre</label>
             <input formControlName="title" type="text" class="form-control" id="inputTitre" placeholder="Titre">
@@ -20,11 +23,11 @@
         </div>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Enregistrer l’article</button>
+            <button type="submit" (click)= "SaveArticle()" [class]="isModif == false ? 'btn btn-primary' : 'btn btn-warning'">{{isModif == false ? 'Enregistrer' : 'Modifier'}} l’article</button>
         </div>
     </form> 
     <div class="text-center">
-        <img (click) = "Logout()" id = "logout_img" src="/assets/icons80.png" class="img-fluid btn" alt="Responsive image">
+        <img data-toggle="modal" data-target="#LogoutModal" id = "logout_img" src="/assets/icons80.png" class="img-fluid btn" alt="Responsive image">
     </div>
 </div> 
 <br>
@@ -47,10 +50,50 @@
                 {{article.isPublished == true ? 'Oui' : 'Non'}}
             </td>
             <td>
-                <a (click) = "DeleteArticle(article)" type="button" class="btn btn-danger">Supprimmer</a>
-                <!-- <a type="button" class="btn btn-warning">Modifier</a> -->
+                <a data-toggle="modal" attr.data-target="#{{article.id}}" type="button" class="btn btn-danger text-light">Supprimmer</a>
+                <a type="button" (click)="PatchFormData(article.id)" class="btn btn-warning ml-3 text-light">Modifier</a>
             </td>
+            <!-- Modal pour le btn de suppression -->
+            <div class="modal fade" [id]="article.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Confirmation de suppression d'une article</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Voulez-vous supprimer cette article: {{article.title}}?
+                    </div>
+                    <div class="modal-footer">
+                      <button (click) = "DeleteArticle(article)" type="button" class="btn btn-primary">Oui</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
             </tr>
     </tbody>
 </table>
+<!-- Modal pour le btn de deconnexion -->
+<div class="modal fade" id="LogoutModal" tabindex="-1" role="dialog" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="LogoutModalLabel">Confirmation de deconnexion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            Voulez-vous vous déconnecter ?
+        </div>
+        <div class="modal-footer">
+        <button (click) = "Logout()" type="button" class="btn btn-primary">Oui</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+        </div>
+    </div>
+    </div>
+</div>
 </div>

@@ -3,26 +3,68 @@
     {
       "id": 1,
       "email": "kokokantisambatra@gmail.com",
-      "password": "user"
+      "password": "password"
     }
   ],
   "articles": [
     {
-      "id": 1,
-      "title": "Article non publie",
-      "description": "Je suis un article publié",
-      "isPublished": true
-    },
-    {
-      "id": 2,
-      "title": "Article non publie",
-      "description": "Je ne suis pas encore publié",
-      "isPublished": false
-    },
-    {
       "id": 3,
       "title": "Article non publie",
       "description": "Je ne suis pas encore publié ",
+      "isPublished": false
+    },
+    {
+      "title": "Un articless",
+      "description": "zzzz",
+      "isPublished": false,
+      "id": 4
+    },
+    {
+      "title": "sdsss",
+      "description": "wcx",
+      "isPublished": true,
+      "id": 5
+    },
+    {
+      "title": "sdsss",
+      "description": "wcx",
+      "isPublished": true,
+      "id": 6
+    },
+    {
+      "id": 7,
+      "title": "azee",
+      "description": "qqqq",
+      "isPublished": false
+    },
+    {
+      "id": 8,
+      "title": "azee",
+      "description": "qqqq",
+      "isPublished": false
+    },
+    {
+      "id": 9,
+      "title": "wxwx",
+      "description": "cxwc",
+      "isPublished": true
+    },
+    {
+      "id": 10,
+      "title": "wxwx",
+      "description": "cxwc",
+      "isPublished": true
+    },
+    {
+      "id": 11,
+      "title": "exemple",
+      "description": "un exmeple",
+      "isPublished": false
+    },
+    {
+      "id": 12,
+      "title": "exemple",
+      "description": "un exmeple",
       "isPublished": false
     }
   ]

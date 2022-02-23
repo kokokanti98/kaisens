@@ -18,6 +18,7 @@ export class ArticlesService {
   public getAllArticles(){
     // Va nous retourner la liste des articles via requête http GET
     return this.http.get<IArticles[]>(this.TASK_API_URL).pipe(
+      // On va afficher sur la consoles tous les articles
       tap(articles => console.log('articles: ', articles))
     );
   }
@@ -39,6 +40,16 @@ export class ArticlesService {
 
     return this.http.delete<IArticles>(url).pipe(
       //catchError(this.handleHttpError)
+    );
+  }
+  // Fonction sur le service pour faire la maj d'une article
+  public updateArticle(article: IArticles, id: number): Observable<IArticles> {
+    console.log(id);
+    // URL de l'api pour la modification
+    const url = `${this.TASK_API_URL}/${article.id}`;
+    //Faire la modification
+    return this.http.put<IArticles>(url, article).pipe(
+      // autre requetes
     );
   }
 }
