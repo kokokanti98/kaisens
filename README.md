@@ -5,4 +5,4 @@
 ### npm install -g json-server(sur un autre terminal)
 
 # Structure 
-## Les Models, Views, Controller se trouve dans le dossier /app/src/shared
+## Les Models, Views, Controller se trouve dans le dossier /src/app/shared
