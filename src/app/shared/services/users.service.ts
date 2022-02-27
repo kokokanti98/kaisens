@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 // Pour gérer les érreurs et tap pour afficher dans la console
 import { tap, catchError, map } from 'rxjs/operators';
-import { IUsers } from './users';
+import { IUsers } from '../models/users';
 
 @Injectable({
   providedIn: 'root'

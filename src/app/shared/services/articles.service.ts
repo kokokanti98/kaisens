@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError, of } from 'rxjs';
 // Pour gérer les érreurs et tap pour afficher dans la console
 import { tap, catchError, map } from 'rxjs/operators';
-import { IArticles } from './articles';
+import { IArticles } from '../models/articles';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class ArticlesService {
     );
   }
 // Fonction pour créer une article
-  public createTask(article: IArticles): Observable<IArticles>{
+  public createArticle(article: IArticles): Observable<IArticles>{
     article = {
       // on va prendre les valeur de l article
       ...article
