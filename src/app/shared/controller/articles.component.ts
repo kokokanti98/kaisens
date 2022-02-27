@@ -1,14 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // Importer du module qu'on a besoin pour le formulaire
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticlesService } from './articles.service';
-import { IArticles } from './articles';
+import { IArticles } from '../models/articles';
+import { ArticlesService } from '../services/articles.service';
+
 
 @Component({
   selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+  templateUrl: '../views/articles/articles.component.html',
+  styleUrls: ['../views/articles/articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
 // Boolean modif
@@ -92,17 +93,17 @@ export class ArticlesComponent implements OnInit {
           ...this.articleForm.value
         }
         //console.log(article);
-        console.log(article);
         if(this.isModif == false){
-          console.log(article);
-          this.articlesService.createTask(article).subscribe({
+        // Pour créer une article
+          this.articlesService.createArticle(article).subscribe({
             next: () => this.saveCompleted()
           });
         }
         else{
+        // Pour modifier une article
           this.articlesService.updateArticle(article, article.id).subscribe({
             next: () => this.saveCompleted()
-          });
+          }); 
         }
         
       }

@@ -16,8 +16,8 @@ import  { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { LoginComponent } from './login/login.component';
+import { ArticlesComponent } from './shared/controller/articles.component';
+import { LoginComponent } from './shared/controller/login.component';
 
 
 
